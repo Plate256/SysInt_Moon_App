@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background">#1A1635</color>
+    <color name="card_background">#2C2652</color>
+    <color name="moon_yellow">#F9D342</color>
+    <color name="text_secondary">#A0A0A0</color>
 </resources>
