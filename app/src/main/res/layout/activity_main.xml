@@ -1,263 +1,370 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:fillViewport="true">
+    android:background="@drawable/bg_1">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp">
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Top Header -->
-        <ImageView
-            android:id="@+id/icon_moon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/moon_placeholder"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_header_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Moon Phase"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/icon_moon"
-            app:layout_constraintStart_toEndOf="@id/icon_moon"
-            app:layout_constraintTop_toTopOf="@id/icon_moon" />
-
-        <TextView
-            android:id="@+id/tv_current_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="May 4, 2026"
-            android:textColor="@color/text_secondary"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/tv_header_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_header_title" />
-
-        <!-- Main Moon Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_main"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:cardBackgroundColor="@color/card_background"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="0dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_header_title"
-            app:strokeWidth="0dp">
+            android:padding="24dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <!-- Top Navigation -->
+            <TextView
+                android:id="@+id/tvMangata"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="24dp">
+                android:fontFamily="@font/serenity"
+                android:text="M A N G A T A"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/iv_moon_large"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/moon_placeholder"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/serenity"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="MONDAY, MAY 4 2026" />
 
-                <TextView
-                    android:id="@+id/tv_phase_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Waning Gibbous"
-                    android:textColor="@color/white"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/iv_moon_large" />
+            <!-- Moon Display Area -->
+            <ImageView
+                android:id="@+id/ivMoon"
+                android:layout_width="280dp"
+                android:layout_height="280dp"
+                android:layout_marginTop="40dp"
+                android:contentDescription="Moon Phase Image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMangata"
+                tools:src="@drawable/moon_placeholder" />
 
-                <TextView
-                    android:id="@+id/tv_lunar_day"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Day 17 of lunar cycle"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_phase_name" />
+            <TextView
+                android:id="@+id/btnPrev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="&lt;"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp"
+                app:layout_constraintBottom_toBottomOf="@id/ivMoon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivMoon" />
 
-                <TextView
-                    android:id="@+id/tv_illumination_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="Illumination"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_lunar_day" />
+            <TextView
+                android:id="@+id/btnNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="&gt;"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp"
+                app:layout_constraintBottom_toBottomOf="@id/ivMoon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivMoon" />
 
-                <TextView
-                    android:id="@+id/tv_illumination_percent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="93%"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_illumination_label"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_illumination_label" />
+            <!-- Divider -->
+            <ImageView
+                android:id="@+id/dividerTop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="Divider"
+                android:scaleType="fitCenter"
+                android:src="@drawable/top"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivMoon" />
 
-                <com.google.android.material.progressindicator.LinearProgressIndicator
-                    android:id="@+id/progress_illumination"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:progress="93"
-                    app:indicatorColor="@color/moon_yellow"
-                    app:layout_constraintTop_toBottomOf="@id/tv_illumination_label"
-                    app:trackColor="#3D366D"
-                    app:trackCornerRadius="4dp"
-                    app:trackThickness="8dp" />
+            <!-- Main Title -->
+            <TextView
+                android:id="@+id/tvMoonPhase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/higuen"
+                android:textColor="#FFFFFF"
+                android:textSize="45sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dividerTop"
+                tools:text="Full Moon" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Upcoming Phases Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_upcoming"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:cardBackgroundColor="@color/card_background"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="0dp"
-            app:layout_constraintTop_toBottomOf="@id/card_main"
-            app:strokeWidth="0dp">
-
+            <!-- Icon Grid/Row -->
             <LinearLayout
+                android:id="@+id/llMoonTimes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp">
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                app:layout_constraintTop_toBottomOf="@id/tvMoonPhase">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tvTime1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:layout_weight="1"
+                    android:fontFamily="@font/serenity"
+                    android:gravity="center"
+                    android:text="🌙\n8:08\nPM"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/ic_launcher_foreground"
-                        app:tint="@color/white" />
+                <TextView
+                    android:id="@+id/tvTime2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/serenity"
+                    android:gravity="center"
+                    android:text="🌙\n6:58\nAM"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
 
+                <TextView
+                    android:id="@+id/tvTime3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/serenity"
+                    android:gravity="center"
+                    android:text="☀️\n5:26\nAM"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvTime4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/serenity"
+                    android:gravity="center"
+                    android:text="☀️\n5:57\nPM"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Details Section -->
+            <TableLayout
+                android:id="@+id/tlDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:stretchColumns="1"
+                app:layout_constraintTop_toBottomOf="@id/llMoonTimes">
+
+                <TableRow android:layout_marginBottom="8dp">
                     <TextView
+                        android:fontFamily="@font/cotoris"
+                        android:text="ILLUMINATION:"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/tvIllumination"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="Upcoming Phases"
-                        android:textColor="@color/white"
+                        android:layout_column="2"
+                        android:fontFamily="@font/cotoris"
+                        android:gravity="end"
+                        android:textColor="#FFFFFF"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                        tools:text="67%" />
+                </TableRow>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#3D366D" />
+                <TableRow android:layout_marginBottom="8dp">
+                    <TextView
+                        android:fontFamily="@font/cotoris"
+                        android:text="DISTANCE:"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/tvDistance"
+                        android:layout_width="wrap_content"
+                        android:layout_column="2"
+                        android:fontFamily="@font/cotoris"
+                        android:gravity="end"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        tools:text="405,905 KM" />
+                </TableRow>
 
-                <!-- Upcoming Phases List -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_upcoming_phases"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    tools:listitem="@layout/item_upcoming_phase" />
+                <TableRow android:layout_marginBottom="8dp">
+                    <TextView
+                        android:fontFamily="@font/cotoris"
+                        android:text="MOON AGE:"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/tvMoonAge"
+                        android:layout_width="wrap_content"
+                        android:layout_column="2"
+                        android:fontFamily="@font/cotoris"
+                        android:gravity="end"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        tools:text="17.3 DAYS" />
+                </TableRow>
 
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                <TableRow android:layout_marginBottom="8dp">
+                    <TextView
+                        android:fontFamily="@font/cotoris"
+                        android:text="MOON ZODIAC:"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/tvZodiac"
+                        android:layout_width="wrap_content"
+                        android:layout_column="2"
+                        android:fontFamily="@font/cotoris"
+                        android:gravity="end"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        tools:text="SAGITTARIUS" />
+                </TableRow>
+            </TableLayout>
 
-        <!-- Insights Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_insights"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="32dp"
-            app:cardBackgroundColor="@color/card_background"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_upcoming"
-            app:strokeWidth="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- Interpretation Section -->
+            <TextView
+                android:id="@+id/tvInterpretationHeader"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp">
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/cotoris"
+                android:gravity="center"
+                android:text="@string/interpretation_header"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tlDetails" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tonight's Insights"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvInterpretationBody"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/cotoris"
+                android:gravity="center"
+                android:justificationMode="inter_word"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvInterpretationHeader"
+                tools:text="Interpretation body text..." />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Physical World"
-                    android:textColor="@color/moon_yellow"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/dividerInterpretation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="Interpretation Divider"
+                android:scaleType="fitCenter"
+                android:src="@drawable/bto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvInterpretationBody" />
 
-                <TextView
-                    android:id="@+id/tv_insight_physical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Expect high tides. The bright illumination is perfect for night photography or a late-night stroll."
-                    android:textColor="@color/text_secondary"
-                    android:textSize="14sp" />
+            <!-- Special Section -->
+            <TextView
+                android:id="@+id/tvSpecialHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/cotoris"
+                android:gravity="center"
+                android:text="@string/special_header"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dividerInterpretation" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Spirituality"
-                    android:textColor="@color/moon_yellow"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvSpecialBody"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/cotoris"
+                android:gravity="center"
+                android:justificationMode="inter_word"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSpecialHeader"
+                tools:text="Special information text..." />
 
-                <TextView
-                    android:id="@+id/tv_insight_spiritual"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="A time for release and reflection. Letting go of what no longer serves you as the moon begins to wane."
-                    android:textColor="@color/text_secondary"
-                    android:textSize="14sp" />
+            <ImageView
+                android:id="@+id/dividerSpecial"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="Special Divider"
+                android:scaleType="fitCenter"
+                android:src="@drawable/bto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSpecialBody" />
 
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            <!-- Forecast Section -->
+            <TextView
+                android:id="@+id/tvForecastHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/cotoris"
+                android:gravity="center"
+                android:text="@string/forecast_header"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dividerSpecial" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+            <TextView
+                android:id="@+id/tvForecastBody"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="@font/cotoris"
+                android:gravity="center"
+                android:justificationMode="inter_word"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvForecastHeader"
+                tools:text="Forecast information text..." />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

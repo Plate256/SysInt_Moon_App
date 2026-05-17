@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Moon_App</string>
+    <string name="interpretation_header">INTERPRETATION</string>
+    <string name="special_header">SPECIAL</string>
+    <string name="forecast_header">FORECAST</string>
 </resources>
